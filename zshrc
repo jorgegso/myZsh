@@ -124,9 +124,9 @@ alias c.="cd .."
 #fast
 alias q="exit"
 alias cl="clear"
-alias mitool="cd /home/dsaste/mitool"
-alias hm="cd /home/dsaste"
-alias wl="cd /home/dsaste/wordlist"
+alias mitool="cd ~/mitool"
+alias hm="cd ~/dsaste"
+alias wl="cd ~/wordlist"
 alias rm="sudo rm -r"
 
 #nvim
