@@ -102,12 +102,26 @@ source $ZSH/oh-my-zsh.sh
 source /home/dsatre/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
+#fuctions
+
+#s4vitar function
+function showport(){
+  ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
+  ip_address="$(cat $1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3}' | sort -u | head -n 1)"
+  echo -e "\n[*] Extracting information...\n" > extractPorts.tmp
+  echo -e "\t[*] IP Adress: $ip_address" >> extractPorts.tmp
+  echo -e "\t[*] Open  ports: $ports\n" >> extractPorts.tmp
+  echo $ports | tr -d '\n' | xclip -sel clip
+  echo -e "[*] Ports copied to clipboard\n" >> extractPorts.tmp
+  cat extractPorts.tmp; rm extractPorts.tmp
+}
+# sdo() { sudo zsh -c "(){$functions[$1]} ${@:2}" }
+sdo() sudo zsh -c "$functions[$1]" "$@"
 
 # --------------------------------------------alias
-alias editprofile="vim ~/.bash_profile"
-alias editalias="vim ~/.bash_aliases"
-alias editbash="vim ~/.bashrc"
-
+#alias editprofile="vim ~/.bash_profile"
+#alias editalias="vim ~/.bash_aliases"
+alias editall="sudo vim ~/.zshrc" 
 #ls 
 alias ll="ls -la"
 
@@ -121,16 +135,23 @@ alias gp="git push"
 alias c="cd $1"
 alias c.="cd .."
 
-#fast
+#fast keys
 alias q="exit"
 alias cl="clear"
 alias mitool="cd ~/mitool"
-alias hm="cd ~/dsaste"
 alias wl="cd ~/wordlist"
 alias rm="sudo rm -r"
+alias mv="sudo mv"
 
 #nvim
 alias vim="sudo nvim"
+alias thm="sudo openvpn ~/tryhackme/startLinking/mikimiki21.ovpn"
+alias editzsh='vim ~/.zshrc'
+alias hm="cd ~"
 
-#vpn for CTF
-#alias vpnthm="sudo openvpn"
+alias trydir='cd ~/tryhackme/'
+alias cat='batcat'
+alias catold='cat'
+alias catnl='batcat --paging=never'
+alias rb="source ~/.zshrc"
+alias tee="sudo tee"
