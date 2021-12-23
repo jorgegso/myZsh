@@ -145,7 +145,6 @@ alias mv="sudo mv"
 
 #nvim
 alias vim="sudo nvim"
-alias thm="sudo openvpn ~/tryhackme/startLinking/mikimiki21.ovpn"
 alias editzsh='vim ~/.zshrc'
 alias hm="cd ~"
 
